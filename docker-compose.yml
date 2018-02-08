@@ -7,7 +7,7 @@ services:
     env_file: 
       - .env
     environment:
-      - MYSQL_USER=${ASKBOT_DB_NAME}
+      - MYSQL_USER=${ASKBOT_DB_USER}
       - MYSQL_PASSWORD=${ASKBOT_DB_PASSWORD}
       - MYSQL_DATABASE=${ASKBOT_DB_NAME}
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
@@ -28,9 +28,6 @@ services:
       - db
     env_file:
       - .env
-    environment:
-      - ASKBOT_DB_NAME=${ASKBOT_DB_NAME}
-      - ASKBOT_DB_PASSWORD=${ASKBOT_DB_PASSWORD}
 
 volumes:
   app:
