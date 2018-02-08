@@ -1,0 +1,39 @@
+version: '3'
+services: 
+  db: 
+    container_name: askbot_db
+    image: mysql
+    restart: always
+    env_file: 
+      - .env
+    environment:
+      - MYSQL_USER=${ASKBOT_DB_NAME}
+      - MYSQL_PASSWORD=${ASKBOT_DB_PASSWORD}
+      - MYSQL_DATABASE=${ASKBOT_DB_NAME}
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+    volumes:
+      - data:/var/lib/mysql
+    ports:
+      - 33060:3306
+  app:
+    container_name: askbot_app
+    build:
+      context: .
+      dockerfile: app.dockerfile
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+    links:
+      - db
+    env_file:
+      - .env
+    environment:
+      - ASKBOT_DB_NAME=${ASKBOT_DB_NAME}
+      - ASKBOT_DB_PASSWORD=${ASKBOT_DB_PASSWORD}
+
+volumes:
+  app:
+    driver: local
+  data:
+    driver: local
