@@ -30,7 +30,5 @@ services:
       - .env
 
 volumes:
-  app:
-    driver: local
   data:
     driver: local
