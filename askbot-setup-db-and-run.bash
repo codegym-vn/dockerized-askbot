@@ -20,6 +20,6 @@ sed "s/ROOT_URLCONF.*/ROOT_URLCONF = 'urls'/"  settings.py -i
 
 python manage.py migrate --noinput
 
-python setup.py install
+python manage.py collectstatic --noinput
 
 python manage.py runserver 0.0.0.0:8080
