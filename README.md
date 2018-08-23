@@ -1,5 +1,7 @@
 # dockerized-askbot
 
+Mã nguồn dockerized-askbot được sử dụng để thực hành tại [CodeGym](https://codegym.vn)
+
 ## how to up
 
 ```bash
